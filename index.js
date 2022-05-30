@@ -17,7 +17,7 @@ const argv = program.opts();
 
 // TODO: рефакторить
  async function invokeAction({ action, id, name, email, phone }) {
-    console.log(action);
+    
   switch (action) {
     case "list":
   
@@ -34,7 +34,7 @@ const argv = program.opts();
       break;
 
     case "remove":
-     console.log( await removeContact(id));
+     console.log(await removeContact(id));
       break;
 
     default:

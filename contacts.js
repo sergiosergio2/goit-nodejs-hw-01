@@ -6,23 +6,24 @@ const contactsPath = path.resolve('./db/contacts.json');
 async function listContacts() {
  
     try {
-        const data = await fs.readFile(contactsPath, 'utf8')
+        const data = await fs.readFile(contactsPath, 'utf8');
         return JSON.parse(data);
     } catch(err) {
-        console.error(err)
+        console.error(err);
     }
  
   }
 
-function getContactById(contactId) {
+// function getContactById(contactId) {
+//     const { data } = ;
 
-}
+// }
 
 
 async function removeContact(contactId) {
-        const data =await listContacts();
-       const newData = data.filter(({id}) => { return id !== contactId });
-        console.log (contactsPath);
+    
+       const data  = await listContacts();
+       const newData = data.filter(x => x.id !== contactId);
       await fs.writeFile(contactsPath, JSON.stringify(newData), 'utf8');
       
       
