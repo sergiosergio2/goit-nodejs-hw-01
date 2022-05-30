@@ -40,14 +40,20 @@ async function addContact(name, email, phone) {
         email,
         phone,
     };
-    const data = await listContacts();
-    const newData = [...data, newContact];
-    await fs.writeFile(contactsPath, JSON.stringify(newData), 'utf-8');
+    try {
+        const data = await listContacts();
+        const newData = [...data, newContact];
+        await fs.writeFile(contactsPath, JSON.stringify(newData), 'utf-8');
+   
+   
     return `контакт ${newContact} додано до списку!`;
- 
-}
+    } catch(err) {
+        console.error(err);
+    }
+};
 module.exports = {
     listContacts,
     removeContact,
     getContactById,
+    addContact,
 }

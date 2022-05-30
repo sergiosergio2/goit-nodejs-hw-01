@@ -1,5 +1,5 @@
 
-const { listContacts, removeContact, getContactById } = require('./contacts');
+const { listContacts, removeContact, getContactById, addContact } = require('./contacts');
 
 
 const { Command } = require("commander");
@@ -15,9 +15,9 @@ program.parse(process.argv);
 
 const argv = program.opts();
 
-// TODO: рефакторить
+
  async function invokeAction({ action, id, name, email, phone }) {
-    // console.log("entry point");
+    
 
   switch (action) {
     case "list":
@@ -31,7 +31,7 @@ const argv = program.opts();
       break;
 
     case "add":
-      // ... name email phone
+      console.log(await addContact(name, email, phone));
       break;
 
     case "remove":
